@@ -57,7 +57,7 @@ ex) git push --set-upstream origin chess-step1
 	- pull request는 original 저장소의 브랜치(자신의 github 아이디)와 앞 단계에서 생성한 브랜치 이름을 기준으로 한다.
 
 	```
-	ex) code-squad/swift-chessgame godrm 브랜치 기준 => godrm/swift-chessgame ladder-step1
+	ex) code-squad/swift-chessgame godrm 브랜치 기준 => godrm/swift-chessgame chess-step1
 	```
 	
 9. code review 및 push
