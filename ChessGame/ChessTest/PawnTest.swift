@@ -15,6 +15,11 @@ class PawnTest: XCTestCase {
 
     override func tearDown() {
     }
+
+    func test기본생성자() {
+        let pawn = Pawn()
+        XCTAssertEqual(pawn.color, Pawn.Color.white)
+    }
     
     func verifyPawn(color: String) -> Bool {
         let pawn = Pawn(with: color)
@@ -22,22 +27,10 @@ class PawnTest: XCTestCase {
     }
 
     func test화이트_인스턴스_생성하기() {
-        XCTAssertTrue(verifyPawn(color: "white"))
+        XCTAssertTrue(verifyPawn(color: Pawn.Color.white))
     }
 
     func test블랙_인스턴스_생성하기() {
-        XCTAssertTrue(verifyPawn(color: "black"))
+        XCTAssertTrue(verifyPawn(color: Pawn.Color.black))
     }
-
-    /*
-    func test화이트_인스턴스_생성하기() {
-        let pawn = Pawn(with: "white")
-        XCTAssertEqual(pawn.color, "white")
-    }
-
-    func test블랙_인스턴스_생성하기() {
-        let pawn = Pawn(with: "black")
-        XCTAssertEqual(pawn.color, "black")
-    }
-    */
 }

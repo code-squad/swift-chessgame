@@ -8,10 +8,23 @@
 
 import Foundation
 
-class Pawn {
+class Pawn : Equatable{
+    static func == (lhs: Pawn, rhs: Pawn) -> Bool {
+        lhs.color == rhs.color
+    }
+    
+    struct Color {
+        static let white = "WHITE"
+        static let black = "BLACK"
+    }
+    
     let color : String
     
     init(with color: String) {
         self.color = color
+    }
+    
+    convenience init() {
+        self.init(with: Color.white)
     }
 }

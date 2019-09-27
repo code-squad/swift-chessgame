@@ -10,6 +10,9 @@
 		830B6C85233E054C0051DBC4 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C84233E054C0051DBC4 /* Pawn.swift */; };
 		830B6C86233E054C0051DBC4 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C84233E054C0051DBC4 /* Pawn.swift */; };
 		830B6C88233E07340051DBC4 /* PawnTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C87233E07340051DBC4 /* PawnTest.swift */; };
+		830B6C8A233E1E780051DBC4 /* BoardTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C89233E1E780051DBC4 /* BoardTest.swift */; };
+		830B6C8C233E1EBF0051DBC4 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C8B233E1EBF0051DBC4 /* Board.swift */; };
+		830B6C8D233E1EBF0051DBC4 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C8B233E1EBF0051DBC4 /* Board.swift */; };
 		832D1ADF233CB957009D58D3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D1ADE233CB957009D58D3 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -28,6 +31,8 @@
 /* Begin PBXFileReference section */
 		830B6C84233E054C0051DBC4 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		830B6C87233E07340051DBC4 /* PawnTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PawnTest.swift; sourceTree = "<group>"; };
+		830B6C89233E1E780051DBC4 /* BoardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
+		830B6C8B233E1EBF0051DBC4 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		832D1ADB233CB957009D58D3 /* ChessGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChessGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		832D1ADE233CB957009D58D3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		835B03ED233CC33900A64BE4 /* ChessTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +80,7 @@
 			children = (
 				832D1ADE233CB957009D58D3 /* main.swift */,
 				830B6C84233E054C0051DBC4 /* Pawn.swift */,
+				830B6C8B233E1EBF0051DBC4 /* Board.swift */,
 			);
 			path = ChessGame;
 			sourceTree = "<group>";
@@ -83,6 +89,7 @@
 			isa = PBXGroup;
 			children = (
 				830B6C87233E07340051DBC4 /* PawnTest.swift */,
+				830B6C89233E1E780051DBC4 /* BoardTest.swift */,
 				835B03F1233CC33900A64BE4 /* Info.plist */,
 			);
 			path = ChessTest;
@@ -132,7 +139,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1030;
+				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = codesquad;
 				TargetAttributes = {
 					832D1ADA233CB957009D58D3 = {
@@ -149,6 +156,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 832D1AD2233CB957009D58D3;
 			productRefGroup = 832D1ADC233CB957009D58D3 /* Products */;
@@ -178,6 +186,7 @@
 			files = (
 				832D1ADF233CB957009D58D3 /* main.swift in Sources */,
 				830B6C85233E054C0051DBC4 /* Pawn.swift in Sources */,
+				830B6C8C233E1EBF0051DBC4 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,7 +194,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830B6C8A233E1E780051DBC4 /* BoardTest.swift in Sources */,
 				830B6C86233E054C0051DBC4 /* Pawn.swift in Sources */,
+				830B6C8D233E1EBF0051DBC4 /* Board.swift in Sources */,
 				830B6C88233E07340051DBC4 /* PawnTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -311,6 +322,7 @@
 		832D1AE3233CB957009D58D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -320,6 +332,7 @@
 		832D1AE4233CB957009D58D3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "-";
 				CODE_SIGN_STYLE = Automatic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
