@@ -19,20 +19,32 @@ class BoardTest: XCTestCase {
     }
 
     func test보드_생성_성공() {
-        let whitePawn = Pawn.init(with: Pawn.Color.white, representation: Pawn.Representation.white)
+        let whitePawn = Piece.init(with: Piece.Color.white, representation: Piece.Representation.Pawn.white)
         board.addWhite(pawn: whitePawn)
         XCTAssertEqual(board.count, 1)
         XCTAssertEqual(board.whitePawn(at: 0), whitePawn)
 
-        let blackPawn = Pawn.init(with: Pawn.Color.black, representation: Pawn.Representation.black)
+        let blackPawn = Piece.init(with: Piece.Color.black, representation: Piece.Representation.Pawn.black)
         board.addBlack(pawn: blackPawn)
-        XCTAssertEqual(board.count, 1)
+        XCTAssertEqual(board.count, 2)
         XCTAssertEqual(board.blackPawn(at: 0), blackPawn)
     }
     
     func test보드_초기화_성공() {
         board.initialize()
+        XCTAssertEqual(board.count, 32)
         XCTAssertEqual(board.whitePawnsResult(), "♙♙♙♙♙♙♙♙")
         XCTAssertEqual(board.blackPawnsResult(), "♟♟♟♟♟♟♟♟")
+        let boardDummy = """
+♜♞♝♛♚♝♞♜
+♟♟♟♟♟♟♟♟
+________
+________
+________
+________
+♙♙♙♙♙♙♙♙
+♖♘♗♕♔♗♘♖
+"""
+        XCTAssertEqual(boardDummy, board.makeBoardResult())
     }
 }
