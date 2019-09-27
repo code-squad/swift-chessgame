@@ -26,7 +26,7 @@ class BoardTest: XCTestCase {
 
         let blackPawn = Pawn.init(with: Pawn.Color.black, representation: Pawn.Representation.black)
         board.addBlack(pawn: blackPawn)
-        XCTAssertEqual(board.count, 1)
+        XCTAssertEqual(board.count, 2)
         XCTAssertEqual(board.blackPawn(at: 0), blackPawn)
     }
     
