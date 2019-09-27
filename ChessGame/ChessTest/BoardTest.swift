@@ -9,18 +9,30 @@
 import XCTest
 
 class BoardTest: XCTestCase {
+    var board : Board!
+    
     override func setUp() {
+        board = Board()
     }
 
     override func tearDown() {
     }
 
-    func test보드생성_성공() {
-        let board = Board()
-        
-        let whitePawn = Pawn.init(with: Pawn.Color.white)
-        board.add(pawn: whitePawn)
+    func test보드_생성_성공() {
+        let whitePawn = Pawn.init(with: Pawn.Color.white, representation: Pawn.Representation.white)
+        board.addWhite(pawn: whitePawn)
         XCTAssertEqual(board.count, 1)
-        XCTAssertEqual(board[0], whitePawn)
+        XCTAssertEqual(board.whitePawn(at: 0), whitePawn)
+
+        let blackPawn = Pawn.init(with: Pawn.Color.black, representation: Pawn.Representation.black)
+        board.addBlack(pawn: blackPawn)
+        XCTAssertEqual(board.count, 1)
+        XCTAssertEqual(board.blackPawn(at: 0), blackPawn)
+    }
+    
+    func test보드_초기화_성공() {
+        board.initialize()
+        XCTAssertEqual(board.whitePawnsResult(), "♙♙♙♙♙♙♙♙")
+        XCTAssertEqual(board.blackPawnsResult(), "♟♟♟♟♟♟♟♟")
     }
 }

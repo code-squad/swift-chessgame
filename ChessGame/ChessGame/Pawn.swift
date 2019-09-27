@@ -18,13 +18,20 @@ class Pawn : Equatable{
         static let black = "BLACK"
     }
     
-    let color : String
+    struct Representation {
+        static let white = "♙"
+        static let black = "♟"
+    }
     
-    init(with color: String) {
+    let color : String
+    let representation : String
+    
+    init(with color: String, representation: String) {
         self.color = color
+        self.representation = representation
     }
     
     convenience init() {
-        self.init(with: Color.white)
+        self.init(with: Color.white, representation: Representation.white)
     }
 }

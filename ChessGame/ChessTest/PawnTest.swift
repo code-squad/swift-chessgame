@@ -21,16 +21,16 @@ class PawnTest: XCTestCase {
         XCTAssertEqual(pawn.color, Pawn.Color.white)
     }
     
-    func verifyPawn(color: String) -> Bool {
-        let pawn = Pawn(with: color)
+    func verifyPawn(color: String, representation: String) -> Bool {
+        let pawn = Pawn(with: color, representation: representation)
         return pawn.color == color
     }
 
     func test화이트_인스턴스_생성하기() {
-        XCTAssertTrue(verifyPawn(color: Pawn.Color.white))
+        XCTAssertTrue(verifyPawn(color: Pawn.Color.white, representation: Pawn.Representation.white))
     }
 
     func test블랙_인스턴스_생성하기() {
-        XCTAssertTrue(verifyPawn(color: Pawn.Color.black))
+        XCTAssertTrue(verifyPawn(color: Pawn.Color.black, representation: Pawn.Representation.black))
     }
 }
