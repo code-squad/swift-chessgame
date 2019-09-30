@@ -9,110 +9,81 @@
 import Foundation
 
 class Board {
-    private var whitePieces : [Piece]
-    private var whitePawns : [Piece]
-    private var blackPieces : [Piece]
-    private var blackPawns : [Piece]
+    private var ranks : Array<Rank>
 
     init() {
-        whitePieces = [Piece]()
-        whitePawns = [Piece]()
-        blackPieces = [Piece]()
-        blackPawns = [Piece]()
+        ranks = [Rank]()
     }
     
-    var count : Int {
-        return whitePieces.count + blackPieces.count
-            + whitePawns.count + blackPawns.count
-    }
-    
-    func whitePawn(at index : Int) -> Piece {
-        return whitePawns[index]
-    }
-
-    func blackPawn(at index : Int) -> Piece {
-        return blackPawns[index]
-    }
-
-    func addWhite(piece : Piece) {
-        whitePieces.append(piece)
-    }
-
-    func addWhite(pawn : Piece) {
-        whitePawns.append(pawn)
-    }
-
-    func addBlack(piece : Piece) {
-        blackPieces.append(piece)
-    }
-
-    func addBlack(pawn : Piece) {
-        blackPawns.append(pawn)
-    }
-
-    func initialize() {
-        addWhite(piece: Piece.makeWhiteRook())
-        addWhite(piece: Piece.makeWhiteKnight())
-        addWhite(piece: Piece.makeWhiteBishop())
-        addWhite(piece: Piece.makeWhiteQueen())
-        addWhite(piece: Piece.makeWhiteKing())
-        addWhite(piece: Piece.makeWhiteBishop())
-        addWhite(piece: Piece.makeWhiteKnight())
-        addWhite(piece: Piece.makeWhiteRook())
-        (0..<8).forEach { _ in
-            addWhite(pawn: Piece(with: Pawn.Color.white, representation: Pawn.Representation.white))
-        }
-        (0..<8).forEach { _ in
-            addBlack(pawn: Piece(with: Pawn.Color.black, representation: Pawn.Representation.black))
-        }
-        addBlack(piece: Piece.makeBlackRook())
-        addBlack(piece: Piece.makeBlackKnight())
-        addBlack(piece: Piece.makeBlackBishop())
-        addBlack(piece: Piece.makeBlackQueen())
-        addBlack(piece: Piece.makeBlackKing())
-        addBlack(piece: Piece.makeBlackBishop())
-        addBlack(piece: Piece.makeBlackKnight())
-        addBlack(piece: Piece.makeBlackRook())
-    }
-    
-    func whitePawnsResult() -> String {
-        return makePiecesResult(with: whitePawns)
-    }
-
-    func whitePiecesResult() -> String {
-        return makePiecesResult(with: whitePieces)
-    }
-    
-    func blackPawnsResult() -> String {
-        return makePiecesResult(with: blackPawns)
-    }
-
-    func blackPiecesResult() -> String {
-        return makePiecesResult(with: blackPieces)
-    }
-    
-    private func makePiecesResult(with pieces : Array<Piece>) -> String {
-        var result = ""
-        for piece in pieces {
-            result += piece.representation
+    func count(color: Piece.Color, type: Piece.TypeCase) -> Int {
+        var result = 0
+        ranks.forEach{ rank in
+            result += rank.count(color: color, type: type)
         }
         return result
     }
     
-    private func makeBlackLine() -> String{
-        return "________"
+    func initialize() {
+        ranks.append(Rank.makeWhitePieces(index: 0))
+        ranks.append(Rank.makeWhitePawns(yIndex: 1))
+        ranks.append(Rank.makeBlackLine(yIndex: 2))
+        ranks.append(Rank.makeBlackLine(yIndex: 3))
+        ranks.append(Rank.makeBlackLine(yIndex: 4))
+        ranks.append(Rank.makeBlackLine(yIndex: 5))
+        ranks.append(Rank.makeBlackPawns(yIndex: 6))
+        ranks.append(Rank.makeBlackPieces(index: 7))
     }
     
-    func makeBoardResult() -> String {
-        var boardResult = Array<String>()
-        boardResult.append(blackPiecesResult())
-        boardResult.append(blackPawnsResult())
-        boardResult.append(makeBlackLine())
-        boardResult.append(makeBlackLine())
-        boardResult.append(makeBlackLine())
-        boardResult.append(makeBlackLine())
-        boardResult.append(whitePawnsResult())
-        boardResult.append(whitePiecesResult())
-        return boardResult.joined(separator: "\n")
+    func initializeEmpty() {
+        for index in 0..<8 {
+            ranks.append(Rank.makeBlackLine(yIndex: index))
+        }
+    }
+
+    private func show(with rank : Rank) -> String {
+        var result = Array<String>()
+        for piece in rank.pieces {
+            result.append(piece.representation)
+        }
+        return result.joined()
+    }
+    
+    func showBoard() -> String {
+        var result = Array<String>()
+        for rank in ranks {
+            result.append(show(with: rank))
+        }
+        return result.joined(separator: "\n")
+    }
+    
+    func findPiece(at word: String) -> Piece? {
+        let maybe = Position(with: word)
+        guard let position = maybe else { return nil }
+        return ranks[position.zerobased.y].find(at: position.zerobased.x)
+    }
+    
+    func move(_ piece: Piece, to position: Position) {
+        ranks[position.zerobased.y].move(to: position.zerobased.x, piece: piece)
+    }
+    
+    func move(_ piece: Piece, to position: String) {
+        move(piece, to: Position(with: position) ?? Position(x: 0, y: 0))
+    }
+    
+    private func findPieces(by color: Piece.Color) -> Array<Piece> {
+        var pieces = Array<Piece>()
+        for rank in ranks {
+            pieces.append(contentsOf: rank.findPieces(by: color))
+        }
+        return pieces
+    }
+    
+    func point(of color: Piece.Color) -> Double {
+        let pieces = findPieces(by: color)
+        var point = 0.0
+        for piece in pieces {
+            point += piece.point(of: pieces)
+        }
+        return point
     }
 }

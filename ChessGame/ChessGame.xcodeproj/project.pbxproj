@@ -15,6 +15,11 @@
 		830B6C8D233E1EBF0051DBC4 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C8B233E1EBF0051DBC4 /* Board.swift */; };
 		830B6C8F233E47600051DBC4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C8E233E47600051DBC4 /* Piece.swift */; };
 		830B6C91233E49700051DBC4 /* Piece.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C8E233E47600051DBC4 /* Piece.swift */; };
+		830B6C93233EF3610051DBC4 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C92233EF3600051DBC4 /* Rank.swift */; };
+		830B6C94233EF3610051DBC4 /* Rank.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C92233EF3600051DBC4 /* Rank.swift */; };
+		830B6C962340C70D0051DBC4 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C952340C70D0051DBC4 /* Position.swift */; };
+		830B6C972340C70D0051DBC4 /* Position.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C952340C70D0051DBC4 /* Position.swift */; };
+		830B6C992340C7930051DBC4 /* PositionTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 830B6C982340C7930051DBC4 /* PositionTest.swift */; };
 		832D1ADF233CB957009D58D3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D1ADE233CB957009D58D3 /* main.swift */; };
 /* End PBXBuildFile section */
 
@@ -36,6 +41,9 @@
 		830B6C89233E1E780051DBC4 /* BoardTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTest.swift; sourceTree = "<group>"; };
 		830B6C8B233E1EBF0051DBC4 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		830B6C8E233E47600051DBC4 /* Piece.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Piece.swift; sourceTree = "<group>"; };
+		830B6C92233EF3600051DBC4 /* Rank.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rank.swift; sourceTree = "<group>"; };
+		830B6C952340C70D0051DBC4 /* Position.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Position.swift; sourceTree = "<group>"; };
+		830B6C982340C7930051DBC4 /* PositionTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositionTest.swift; sourceTree = "<group>"; };
 		832D1ADB233CB957009D58D3 /* ChessGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChessGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		832D1ADE233CB957009D58D3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 		835B03ED233CC33900A64BE4 /* ChessTest.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessTest.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,7 +92,9 @@
 				832D1ADE233CB957009D58D3 /* main.swift */,
 				830B6C84233E054C0051DBC4 /* Pawn.swift */,
 				830B6C8E233E47600051DBC4 /* Piece.swift */,
+				830B6C952340C70D0051DBC4 /* Position.swift */,
 				830B6C8B233E1EBF0051DBC4 /* Board.swift */,
+				830B6C92233EF3600051DBC4 /* Rank.swift */,
 			);
 			path = ChessGame;
 			sourceTree = "<group>";
@@ -93,6 +103,7 @@
 			isa = PBXGroup;
 			children = (
 				830B6C87233E07340051DBC4 /* PieceTest.swift */,
+				830B6C982340C7930051DBC4 /* PositionTest.swift */,
 				830B6C89233E1E780051DBC4 /* BoardTest.swift */,
 				835B03F1233CC33900A64BE4 /* Info.plist */,
 			);
@@ -190,7 +201,9 @@
 			files = (
 				830B6C8F233E47600051DBC4 /* Piece.swift in Sources */,
 				832D1ADF233CB957009D58D3 /* main.swift in Sources */,
+				830B6C962340C70D0051DBC4 /* Position.swift in Sources */,
 				830B6C85233E054C0051DBC4 /* Pawn.swift in Sources */,
+				830B6C93233EF3610051DBC4 /* Rank.swift in Sources */,
 				830B6C8C233E1EBF0051DBC4 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -199,9 +212,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				830B6C972340C70D0051DBC4 /* Position.swift in Sources */,
 				830B6C8A233E1E780051DBC4 /* BoardTest.swift in Sources */,
+				830B6C992340C7930051DBC4 /* PositionTest.swift in Sources */,
 				830B6C86233E054C0051DBC4 /* Pawn.swift in Sources */,
 				830B6C91233E49700051DBC4 /* Piece.swift in Sources */,
+				830B6C94233EF3610051DBC4 /* Rank.swift in Sources */,
 				830B6C8D233E1EBF0051DBC4 /* Board.swift in Sources */,
 				830B6C88233E07340051DBC4 /* PieceTest.swift in Sources */,
 			);

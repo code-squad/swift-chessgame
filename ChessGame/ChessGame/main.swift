@@ -18,7 +18,7 @@ func game() {
         case "s":
             let board = Board()
             board.initialize()
-            print(board.makeBoardResult())
+            print(board.showBoard())
         case "e":
             break;
         default:

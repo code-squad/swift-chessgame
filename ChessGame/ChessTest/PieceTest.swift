@@ -16,74 +16,86 @@ class PieceTest: XCTestCase {
     override func tearDown() {
     }
 
-    func verify(piece: Piece, color: String, representation: String) -> Bool {
-        return (piece.color == color && piece.representation == representation)
+    func verifyWhite(piece: Piece, type: Piece.TypeCase) -> Bool {
+        return (piece.color == .white && piece.type == type)
+    }
+
+    func verifyBlack(piece: Piece, type: Piece.TypeCase) -> Bool {
+        return (piece.color == .black && piece.type == type)
     }
 
     func testPawn_생성하기() {
-        let whitePawn = Piece.makeWhitePawn()
-        XCTAssertTrue(verify(piece: whitePawn, color: Piece.Color.white, representation: Piece.Representation.Pawn.white))
+        let dummy = Position(x: 1, y: 1)
+        let whitePawn = Piece.makeWhitePawn(position: dummy)
+        XCTAssertTrue(verifyWhite(piece: whitePawn, type:.pawn))
 
-        let blackPawn = Piece.makeBlackPawn()
-        XCTAssertTrue(verify(piece: blackPawn, color: Piece.Color.black, representation: Piece.Representation.Pawn.black))
+        let blackPawn = Piece.makeBlackPawn(position: dummy)
+        XCTAssertTrue(verifyBlack(piece: blackPawn, type:.pawn))
     }
     
     func testRook_생성하기() {
-        let whiteRook = Piece.makeWhiteRook()
-        XCTAssertTrue(verify(piece: whiteRook, color: Piece.Color.white, representation: Piece.Representation.Rook.white))
+        let dummy = Position(x: 1, y: 1)
+        let whiteRook = Piece.makeWhiteRook(position: dummy)
+        XCTAssertTrue(verifyWhite(piece: whiteRook, type:.rook))
 
-        let blackRook = Piece.makeBlackRook()
-        XCTAssertTrue(verify(piece: blackRook, color: Piece.Color.black, representation: Piece.Representation.Rook.black))
+        let blackRook = Piece.makeBlackRook(position: dummy)
+        XCTAssertTrue(verifyBlack(piece: blackRook, type:.rook))
     }
 
     func testBishop_생성하기() {
-        let whiteBishop = Piece.makeWhiteBishop()
-        XCTAssertTrue(verify(piece: whiteBishop, color: Piece.Color.white, representation: Piece.Representation.Bishop.white))
+        let dummy = Position(x: 1, y: 1)
+        let whiteBishop = Piece.makeWhiteBishop(position: dummy)
+        XCTAssertTrue(verifyWhite(piece: whiteBishop, type:.bishop))
 
-        let blackBishop = Piece.makeBlackBishop()
-        XCTAssertTrue(verify(piece: blackBishop, color: Piece.Color.black, representation: Piece.Representation.Bishop.black))
+        let blackBishop = Piece.makeBlackBishop(position: dummy)
+        XCTAssertTrue(verifyBlack(piece: blackBishop, type:.bishop))
     }
     
     func testKnight_생성하기() {
-        let whiteKnight = Piece.makeWhiteKnight()
-        XCTAssertTrue(verify(piece: whiteKnight, color: Piece.Color.white, representation: Piece.Representation.Knight.white))
+        let dummy = Position(x: 1, y: 1)
+        let whiteKnight = Piece.makeWhiteKnight(position: dummy)
+        XCTAssertTrue(verifyWhite(piece: whiteKnight, type:.knight))
 
-        let blackKnight = Piece.makeBlackKnight()
-        XCTAssertTrue(verify(piece: blackKnight, color: Piece.Color.black, representation: Piece.Representation.Knight.black))
+        let blackKnight = Piece.makeBlackKnight(position: dummy)
+        XCTAssertTrue(verifyBlack(piece: blackKnight, type:.knight))
     }
     
     func testQueen_생성하기() {
-        let whiteQueen = Piece.makeWhiteQueen()
-        XCTAssertTrue(verify(piece: whiteQueen, color: Piece.Color.white, representation: Piece.Representation.Queen.white))
+        let dummy = Position(x: 1, y: 1)
+        let whiteQueen = Piece.makeWhiteQueen(position: dummy)
+        XCTAssertTrue(verifyWhite(piece: whiteQueen, type:.queen))
 
-        let blackQueen = Piece.makeBlackQueen()
-        XCTAssertTrue(verify(piece: blackQueen, color: Piece.Color.black, representation: Piece.Representation.Queen.black))
+        let blackQueen = Piece.makeBlackQueen(position: dummy)
+        XCTAssertTrue(verifyBlack(piece: blackQueen, type:.queen))
     }
 
     func testKing_생성하기() {
-        let whiteKing = Piece.makeWhiteKing()
-        XCTAssertTrue(verify(piece: whiteKing, color: Piece.Color.white, representation: Piece.Representation.King.white))
+        let dummy = Position(x: 1, y: 1)
+        let whiteKing = Piece.makeWhiteKing(position: dummy)
+        XCTAssertTrue(verifyWhite(piece: whiteKing, type:.king))
 
-        let blackKing = Piece.makeBlackKing()
-        XCTAssertTrue(verify(piece: blackKing, color: Piece.Color.black, representation: Piece.Representation.King.black))
+        let blackKing = Piece.makeBlackKing(position: dummy)
+        XCTAssertTrue(verifyBlack(piece: blackKing, type:.king))
     }
     
     func testWhitePieces_생성하기() {
-        XCTAssertTrue(Piece.makeWhitePawn().isWhite())
-        XCTAssertTrue(Piece.makeWhiteRook().isWhite())
-        XCTAssertTrue(Piece.makeWhiteKnight().isWhite())
-        XCTAssertTrue(Piece.makeWhiteBishop().isWhite())
-        XCTAssertTrue(Piece.makeWhiteQueen().isWhite())
-        XCTAssertTrue(Piece.makeWhiteKing().isWhite())
+        let dummy = Position(x: 1, y: 1)
+        XCTAssertTrue(Piece.makeWhitePawn(position: dummy).isWhite())
+        XCTAssertTrue(Piece.makeWhiteRook(position: dummy).isWhite())
+        XCTAssertTrue(Piece.makeWhiteKnight(position: dummy).isWhite())
+        XCTAssertTrue(Piece.makeWhiteBishop(position: dummy).isWhite())
+        XCTAssertTrue(Piece.makeWhiteQueen(position: dummy).isWhite())
+        XCTAssertTrue(Piece.makeWhiteKing(position: dummy).isWhite())
     }
     
     func testBlackPieces_생성하기() {
-        XCTAssertTrue(Piece.makeBlackPawn().isBlack())
-        XCTAssertTrue(Piece.makeBlackRook().isBlack())
-        XCTAssertTrue(Piece.makeBlackKnight().isBlack())
-        XCTAssertTrue(Piece.makeBlackBishop().isBlack())
-        XCTAssertTrue(Piece.makeBlackQueen().isBlack())
-        XCTAssertTrue(Piece.makeBlackKing().isBlack())
+        let dummy = Position(x: 1, y: 1)
+        XCTAssertTrue(Piece.makeBlackPawn(position: dummy).isBlack())
+        XCTAssertTrue(Piece.makeBlackRook(position: dummy).isBlack())
+        XCTAssertTrue(Piece.makeBlackKnight(position: dummy).isBlack())
+        XCTAssertTrue(Piece.makeBlackBishop(position: dummy).isBlack())
+        XCTAssertTrue(Piece.makeBlackQueen(position: dummy).isBlack())
+        XCTAssertTrue(Piece.makeBlackKing(position: dummy).isBlack())
     }
     
     func verifyPawn(color: String, representation: String) -> Bool {

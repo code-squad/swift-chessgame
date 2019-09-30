@@ -8,50 +8,73 @@
 
 import Foundation
 
-final class Piece : Equatable {
+final class Piece : Equatable, Hashable {
     static func == (lhs: Piece, rhs: Piece) -> Bool {
         return (lhs.color == rhs.color
-            && lhs.representation == rhs.representation)
+            && lhs.type == rhs.type
+            && lhs.position == rhs.position)
     }
     
-    struct Color {
-        static let white = "WHITE"
-        static let black = "BLACK"
+    enum Color : Equatable {
+        case white
+        case black
+        case none
     }
-    
-    struct Representation {
-        struct Pawn {
-            static let white = "♙"
-            static let black = "♟"
+
+    enum TypeCase : Double, Equatable {
+        case pawn   = 1.0
+        case rook   = 5.0
+        case knight = 2.5
+        case bishop = 3.0
+        case queen  = 9.0
+        case king   = 0.0
+        case blank  = -0.0
+        
+        func whiteRepresentation() -> String {
+            switch self {
+            case .pawn: return "♙"
+            case .rook: return "♖"
+            case .knight: return "♘"
+            case .bishop: return "♗"
+            case .queen: return "♕"
+            case .king: return "♔"
+            default: return "_"
+            }
         }
-        struct Rook {
-            static let white = "♖"
-            static let black = "♜"
+        
+        func blackRepresentation() -> String {
+            switch self {
+            case .pawn: return "♟"
+            case .rook: return "♜"
+            case .knight: return "♞"
+            case .bishop: return "♝"
+            case .queen: return "♛"
+            case .king: return "♚"
+            default: return "_"
+            }
         }
-        struct Knight {
-            static let white = "♘"
-            static let black = "♞"
-        }
-        struct Bishop {
-            static let white = "♗"
-            static let black = "♝"
-        }
-        struct Queen {
-            static let white = "♕"
-            static let black = "♛"
-        }
-        struct King {
-            static let white = "♔"
-            static let black = "♚"
+        
+        func defaultPoint() -> Double {
+            return self.rawValue
         }
     }
+        
+    let color : Color
+    let type : TypeCase
+    private(set) var position: Position
     
-    let color : String
-    let representation : String
-    
-    init(with color: String, representation: String) {
+    init(with color: Color, type: TypeCase, position: Position) {
         self.color = color
-        self.representation = representation
+        self.type = type
+        self.position = position
+    }
+    
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(color.hashValue * 1000 + type.hashValue * 100 + position.hashValue)
+    }
+    
+    var representation : String {
+        return isWhite() ? type.whiteRepresentation() : type.blackRepresentation()
     }
     
     func isWhite() -> Bool {
@@ -61,53 +84,96 @@ final class Piece : Equatable {
     func isBlack() -> Bool {
         return self.color == Color.black
     }
+    
+    func match(color: Color, type: TypeCase) -> Bool {
+        return match(with: color) && match(with: type)
+    }
+    
+    private func match(with color: Color) -> Bool {
+        return self.color == color
+    }
+
+    private func match(with type: TypeCase) -> Bool {
+        return self.type == type
+    }
+    
+    func addPiece(by color: Color, to list: inout Array<Piece>) {
+        if match(with: color) {
+            list.append(self)
+        }
+    }
+    
+    func point(of pieces: Array<Piece>) -> Double {
+        guard match(with: .pawn) else { return type.defaultPoint() }
+        
+        let neighbors = position.verticalNeighbors()
+        for position in neighbors {
+            if pieces.contains(Piece(with: self.color, type: self.type, position: position)) {
+                return self.type.defaultPoint() - 0.5
+            }
+        }
+        
+        return type.defaultPoint()
+    }
 
     //MARK:- FACTORY METHOD
-    static func makeWhitePawn() -> Piece {
-        return Piece(with: Color.white, representation: Representation.Pawn.white)
+    static func makeWhite(type: TypeCase, position: Position) -> Piece {
+        return Piece(with: Color.white, type: type, position: position)
     }
 
-    static func makeBlackPawn() -> Piece {
-        return Piece(with: Color.black, representation: Representation.Pawn.black)
+    static func makeBlack(type: TypeCase, position: Position) -> Piece {
+        return Piece(with: Color.black, type: type, position: position)
     }
 
-    static func makeWhiteRook() -> Piece {
-        return Piece(with: Color.white, representation: Representation.Rook.white)
+    static func makeWhitePawn(position: Position) -> Piece {
+        return makeWhite(type: .pawn, position: position)
     }
 
-    static func makeBlackRook() -> Piece {
-        return Piece(with: Color.black, representation: Representation.Rook.black)
+    static func makeBlackPawn(position: Position) -> Piece {
+        return makeBlack(type: .pawn, position: position)
     }
 
-    static func makeWhiteKnight() -> Piece {
-        return Piece(with: Color.white, representation: Representation.Knight.white)
+    static func makeWhiteRook(position: Position) -> Piece {
+        return makeWhite(type: .rook, position: position)
     }
 
-    static func makeBlackKnight() -> Piece {
-        return Piece(with: Color.black, representation: Representation.Knight.black)
+    static func makeBlackRook(position: Position) -> Piece {
+        return makeBlack(type: .rook, position: position)
     }
 
-    static func makeWhiteBishop() -> Piece {
-        return Piece(with: Color.white, representation: Representation.Bishop.white)
+    static func makeWhiteKnight(position: Position) -> Piece {
+        return makeWhite(type: .knight, position: position)
     }
 
-    static func makeBlackBishop() -> Piece {
-        return Piece(with: Color.black, representation: Representation.Bishop.black)
+    static func makeBlackKnight(position: Position) -> Piece {
+        return makeBlack(type: .knight, position: position)
     }
 
-    static func makeWhiteQueen() -> Piece {
-        return Piece(with: Color.white, representation: Representation.Queen.white)
+    static func makeWhiteBishop(position: Position) -> Piece {
+        return makeWhite(type: .bishop, position: position)
     }
 
-    static func makeBlackQueen() -> Piece {
-        return Piece(with: Color.black, representation: Representation.Queen.black)
+    static func makeBlackBishop(position: Position) -> Piece {
+        return makeBlack(type: .bishop, position: position)
     }
 
-    static func makeWhiteKing() -> Piece {
-        return Piece(with: Color.white, representation: Representation.King.white)
+    static func makeWhiteQueen(position: Position) -> Piece {
+        return makeWhite(type: .queen, position: position)
     }
 
-    static func makeBlackKing() -> Piece {
-        return Piece(with: Color.black, representation: Representation.King.black)
+    static func makeBlackQueen(position: Position) -> Piece {
+        return makeBlack(type: .queen, position: position)
+    }
+
+    static func makeWhiteKing(position: Position) -> Piece {
+        return makeWhite(type: .king, position: position)
+    }
+
+    static func makeBlackKing(position: Position) -> Piece {
+        return makeBlack(type: .king, position: position)
+    }
+    
+    static func makeBlank(position: Position) -> Piece {
+        return Piece(with: .none, type: .blank, position: position)
     }
 }
