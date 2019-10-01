@@ -9,6 +9,23 @@
 import Foundation
 
 struct Position : Equatable, Hashable, CustomStringConvertible, CustomDebugStringConvertible {
+    struct Degree {
+        let x : Int
+        let y : Int
+        
+        func isOverOneX() -> Bool {
+            return x > 1
+        }
+        
+        func isOverOneY() -> Bool {
+            return y > 1
+        }
+        
+        func isUnderThreeY() -> Bool {
+            return y > -3 && y < 3
+        }
+    }
+    
     private(set) var x : Int
     private(set) var y : Int
     
@@ -33,6 +50,14 @@ struct Position : Equatable, Hashable, CustomStringConvertible, CustomDebugStrin
         let current = zerobased
         return [Position(x: current.x, y: current.y-1),
                 Position(x: current.x, y: current.y+1)]
+    }
+    
+    func direction(to target: Position) -> Direction.Compass? {
+        return Direction.init(x: target.x - self.x, y: target.y - self.x).compass
+    }
+    
+    func degree(to target: Position) -> Degree {
+        return Degree(x: target.x - self.x, y: target.y - self.x)
     }
     
     func hash(into hasher: inout Hasher) {

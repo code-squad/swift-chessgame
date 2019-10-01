@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class Piece : Equatable, Hashable {
+class Piece : Equatable, Hashable {
     static func == (lhs: Piece, rhs: Piece) -> Bool {
         return (lhs.color == rhs.color
             && lhs.type == rhs.type
@@ -62,11 +62,13 @@ final class Piece : Equatable, Hashable {
     let color : Color
     let type : TypeCase
     private(set) var position: Position
+    private(set) var directions: Array<Direction.Compass>
     
-    init(with color: Color, type: TypeCase, position: Position) {
+    init(with color: Color, type: TypeCase, position: Position, directions: Array<Direction.Compass> = [Direction.Compass]()) {
         self.color = color
         self.type = type
         self.position = position
+        self.directions = directions
     }
     
     func hash(into hasher: inout Hasher) {
@@ -115,65 +117,42 @@ final class Piece : Equatable, Hashable {
         
         return type.defaultPoint()
     }
-
-    //MARK:- FACTORY METHOD
-    static func makeWhite(type: TypeCase, position: Position) -> Piece {
-        return Piece(with: Color.white, type: type, position: position)
-    }
-
-    static func makeBlack(type: TypeCase, position: Position) -> Piece {
-        return Piece(with: Color.black, type: type, position: position)
-    }
-
-    static func makeWhitePawn(position: Position) -> Piece {
-        return makeWhite(type: .pawn, position: position)
-    }
-
-    static func makeBlackPawn(position: Position) -> Piece {
-        return makeBlack(type: .pawn, position: position)
-    }
-
-    static func makeWhiteRook(position: Position) -> Piece {
-        return makeWhite(type: .rook, position: position)
-    }
-
-    static func makeBlackRook(position: Position) -> Piece {
-        return makeBlack(type: .rook, position: position)
-    }
-
-    static func makeWhiteKnight(position: Position) -> Piece {
-        return makeWhite(type: .knight, position: position)
-    }
-
-    static func makeBlackKnight(position: Position) -> Piece {
-        return makeBlack(type: .knight, position: position)
-    }
-
-    static func makeWhiteBishop(position: Position) -> Piece {
-        return makeWhite(type: .bishop, position: position)
-    }
-
-    static func makeBlackBishop(position: Position) -> Piece {
-        return makeBlack(type: .bishop, position: position)
-    }
-
-    static func makeWhiteQueen(position: Position) -> Piece {
-        return makeWhite(type: .queen, position: position)
-    }
-
-    static func makeBlackQueen(position: Position) -> Piece {
-        return makeBlack(type: .queen, position: position)
-    }
-
-    static func makeWhiteKing(position: Position) -> Piece {
-        return makeWhite(type: .king, position: position)
-    }
-
-    static func makeBlackKing(position: Position) -> Piece {
-        return makeBlack(type: .king, position: position)
+    
+    func degree(to target: Piece) -> Position.Degree {
+        return self.position.degree(to: target.position)
     }
     
-    static func makeBlank(position: Position) -> Piece {
-        return Piece(with: .none, type: .blank, position: position)
+    func direction(to target: Piece) -> Direction.Compass? {
+        return self.position.direction(to: target.position)
+    }
+    
+    func isSameTeam(with target: Piece) -> Bool {
+        guard !(isWhite() && target.isWhite()) else { return true }
+        guard !(isBlack() && target.isBlack()) else { return true }
+        return false
+    }
+    
+    func verifyMove(to target: Piece) throws -> Direction.Compass {
+        guard !isSameTeam(with: target) else {
+            throw Direction.InternalError.invalidMovePosition
+        }
+        
+        let direction = position.direction(to: target.position)
+        if direction == nil || !directions.contains(direction!) {
+            throw Direction.InternalError.invalidMovePosition
+        }
+        
+        return direction!
+    }
+    
+    func move(to target: Piece) {
+        do {
+            _ = try verifyMove(to: target)
+        }
+        catch {
+            print()
+            return
+        }
+        self.position = target.position
     }
 }

@@ -43,34 +43,34 @@ class Rank {
     
     static func makeWhitePieces(index: Int) -> Rank {
         let rank = Rank()
-        rank.add(piece: Piece.makeWhiteRook(position: Position(x: 0, y: index)))
-        rank.add(piece: Piece.makeWhiteKnight(position: Position(x: 1, y: index)))
-        rank.add(piece: Piece.makeWhiteBishop(position: Position(x: 2, y: index)))
-        rank.add(piece: Piece.makeWhiteQueen(position: Position(x: 3, y: index)))
-        rank.add(piece: Piece.makeWhiteKing(position: Position(x: 4, y: index)))
-        rank.add(piece: Piece.makeWhiteBishop(position: Position(x: 5, y: index)))
-        rank.add(piece: Piece.makeWhiteKnight(position: Position(x: 6, y: index)))
-        rank.add(piece: Piece.makeWhiteRook(position: Position(x: 7, y: index)))
+        rank.add(piece: Rook.makeWhite(at: Position(x: 0, y: index)))
+        rank.add(piece: Knight.makeWhite(at: Position(x: 1, y: index)))
+        rank.add(piece: Bishop.makeWhite(at: Position(x: 2, y: index)))
+        rank.add(piece: Queen.makeWhite(at: Position(x: 3, y: index)))
+        rank.add(piece: King.makeWhite(at: Position(x: 4, y: index)))
+        rank.add(piece: Bishop.makeWhite(at: Position(x: 5, y: index)))
+        rank.add(piece: Knight.makeWhite(at: Position(x: 6, y: index)))
+        rank.add(piece: Rook.makeWhite(at: Position(x: 7, y: index)))
         return rank
     }
     
     static func makeBlackPieces(index: Int) -> Rank {
         let rank = Rank()
-        rank.add(piece: Piece.makeBlackRook(position: Position(x: 0, y: index)))
-        rank.add(piece: Piece.makeBlackKnight(position: Position(x: 1, y: index)))
-        rank.add(piece: Piece.makeBlackBishop(position: Position(x: 2, y: index)))
-        rank.add(piece: Piece.makeBlackQueen(position: Position(x: 3, y: index)))
-        rank.add(piece: Piece.makeBlackKing(position: Position(x: 4, y: index)))
-        rank.add(piece: Piece.makeBlackBishop(position: Position(x: 5, y: index)))
-        rank.add(piece: Piece.makeBlackKnight(position: Position(x: 6, y: index)))
-        rank.add(piece: Piece.makeBlackRook(position: Position(x: 7, y: index)))
+        rank.add(piece: Rook.makeBlack(at: Position(x: 0, y: index)))
+        rank.add(piece: Knight.makeBlack(at: Position(x: 1, y: index)))
+        rank.add(piece: Bishop.makeBlack(at: Position(x: 2, y: index)))
+        rank.add(piece: Queen.makeBlack(at: Position(x: 3, y: index)))
+        rank.add(piece: King.makeBlack(at: Position(x: 4, y: index)))
+        rank.add(piece: Bishop.makeBlack(at: Position(x: 5, y: index)))
+        rank.add(piece: Knight.makeBlack(at: Position(x: 6, y: index)))
+        rank.add(piece: Rook.makeBlack(at: Position(x: 7, y: index)))
         return rank
     }
 
     static func makeWhitePawns(yIndex: Int) -> Rank {
         let rank = Rank()
         for xIndex in 0..<8 {
-            rank.add(piece: Piece.makeWhitePawn(position: Position(x: xIndex, y: yIndex)))
+            rank.add(piece: Pawn.makeWhite(at: Position(x: xIndex, y: yIndex)))
         }
         return rank
     }
@@ -78,7 +78,7 @@ class Rank {
     static func makeBlackPawns(yIndex: Int) -> Rank {
         let rank = Rank()
         for xIndex in 0..<8 {
-            rank.add(piece: Piece.makeBlackPawn(position: Position(x: xIndex, y: yIndex)))
+            rank.add(piece: Pawn.makeBlack(at: Position(x: xIndex, y: yIndex)))
         }
         return rank
     }
@@ -86,7 +86,7 @@ class Rank {
     static func makeBlackLine(yIndex: Int) -> Rank {
         let rank = Rank()
         for xIndex in 0..<8 {
-            rank.add(piece: Piece.makeBlank(position: Position(x: xIndex, y: yIndex)))
+            rank.add(piece: Blank.makeBlank(at: Position(x: xIndex, y: yIndex)))
         }
         return rank
     }
