@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		832D1ADF233CB957009D58D3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D1ADE233CB957009D58D3 /* main.swift */; };
+		CF558D8C23460D4500A7ABE7 /* ChessGameTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D8B23460D4500A7ABE7 /* ChessGameTests.swift */; };
+		CF558D9223460E1800A7ABE7 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D9123460E1800A7ABE7 /* Pawn.swift */; };
+		CF558D9323460F2E00A7ABE7 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D9123460E1800A7ABE7 /* Pawn.swift */; };
+		CF558D972346116E00A7ABE7 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D962346116E00A7ABE7 /* PawnTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -25,10 +29,22 @@
 /* Begin PBXFileReference section */
 		832D1ADB233CB957009D58D3 /* ChessGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChessGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		832D1ADE233CB957009D58D3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
+		CF558D8923460D4500A7ABE7 /* ChessGameTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ChessGameTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		CF558D8B23460D4500A7ABE7 /* ChessGameTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChessGameTests.swift; sourceTree = "<group>"; };
+		CF558D8D23460D4500A7ABE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CF558D9123460E1800A7ABE7 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
+		CF558D962346116E00A7ABE7 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		832D1AD8233CB957009D58D3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF558D8623460D4500A7ABE7 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -42,6 +58,7 @@
 			isa = PBXGroup;
 			children = (
 				832D1ADD233CB957009D58D3 /* ChessGame */,
+				CF558D8A23460D4500A7ABE7 /* ChessGameTests */,
 				832D1ADC233CB957009D58D3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +67,7 @@
 			isa = PBXGroup;
 			children = (
 				832D1ADB233CB957009D58D3 /* ChessGame */,
+				CF558D8923460D4500A7ABE7 /* ChessGameTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,8 +76,19 @@
 			isa = PBXGroup;
 			children = (
 				832D1ADE233CB957009D58D3 /* main.swift */,
+				CF558D9123460E1800A7ABE7 /* Pawn.swift */,
 			);
 			path = ChessGame;
+			sourceTree = "<group>";
+		};
+		CF558D8A23460D4500A7ABE7 /* ChessGameTests */ = {
+			isa = PBXGroup;
+			children = (
+				CF558D8B23460D4500A7ABE7 /* ChessGameTests.swift */,
+				CF558D962346116E00A7ABE7 /* PawnTests.swift */,
+				CF558D8D23460D4500A7ABE7 /* Info.plist */,
+			);
+			path = ChessGameTests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -82,6 +111,23 @@
 			productReference = 832D1ADB233CB957009D58D3 /* ChessGame */;
 			productType = "com.apple.product-type.tool";
 		};
+		CF558D8823460D4500A7ABE7 /* ChessGameTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CF558D9023460D4500A7ABE7 /* Build configuration list for PBXNativeTarget "ChessGameTests" */;
+			buildPhases = (
+				CF558D8523460D4500A7ABE7 /* Sources */,
+				CF558D8623460D4500A7ABE7 /* Frameworks */,
+				CF558D8723460D4500A7ABE7 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ChessGameTests;
+			productName = ChessGameTests;
+			productReference = CF558D8923460D4500A7ABE7 /* ChessGameTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -93,6 +139,9 @@
 				ORGANIZATIONNAME = codesquad;
 				TargetAttributes = {
 					832D1ADA233CB957009D58D3 = {
+						CreatedOnToolsVersion = 10.3;
+					};
+					CF558D8823460D4500A7ABE7 = {
 						CreatedOnToolsVersion = 10.3;
 					};
 				};
@@ -110,9 +159,20 @@
 			projectRoot = "";
 			targets = (
 				832D1ADA233CB957009D58D3 /* ChessGame */,
+				CF558D8823460D4500A7ABE7 /* ChessGameTests */,
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CF558D8723460D4500A7ABE7 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		832D1AD7233CB957009D58D3 /* Sources */ = {
@@ -120,6 +180,17 @@
 			buildActionMask = 2147483647;
 			files = (
 				832D1ADF233CB957009D58D3 /* main.swift in Sources */,
+				CF558D9223460E1800A7ABE7 /* Pawn.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		CF558D8523460D4500A7ABE7 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CF558D972346116E00A7ABE7 /* PawnTests.swift in Sources */,
+				CF558D8C23460D4500A7ABE7 /* ChessGameTests.swift in Sources */,
+				CF558D9323460F2E00A7ABE7 /* Pawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +330,40 @@
 			};
 			name = Release;
 		};
+		CF558D8E23460D4500A7ABE7 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChessGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sungchan.you.ChessGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		CF558D8F23460D4500A7ABE7 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = ChessGameTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = sungchan.you.ChessGameTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -276,6 +381,15 @@
 			buildConfigurations = (
 				832D1AE3233CB957009D58D3 /* Debug */,
 				832D1AE4233CB957009D58D3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CF558D9023460D4500A7ABE7 /* Build configuration list for PBXNativeTarget "ChessGameTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CF558D8E23460D4500A7ABE7 /* Debug */,
+				CF558D8F23460D4500A7ABE7 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
