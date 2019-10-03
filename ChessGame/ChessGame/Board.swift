@@ -1,6 +1,6 @@
 //
 /******************************************************************************
- * File Name        : Pawn.swift
+ * File Name        : Board.swift
  * Description      : ChessGame
  *******************************************************************************
  * Copyright (c) 2002-2019 KineMaster Corp. All rights reserved.
@@ -14,24 +14,24 @@
 
 import Foundation
 
-
-struct Pawn {
+class Board {
+    private var pawns: [Pawn]
     
-    enum PieceColor: Int {
-        case white = 1
-        case black
+    init() {
+        self.pawns = [Pawn]()
     }
-
-    let color: PieceColor
     
-    init(with color: PieceColor = .white) {
-        self.color = color
+    func add(pawn: Pawn) {
+        self.pawns.append(pawn)
     }
-
-}
-
-extension Pawn: Equatable {
-    static func == (lhs: Pawn, rhs: Pawn) -> Bool {
-        lhs.color == rhs.color
+    
+    var count: Int {
+        return self.pawns.count
+    }
+    
+    subscript(index : Int) -> Pawn {
+        get {
+            return self.pawns[index]
+        }
     }
 }
