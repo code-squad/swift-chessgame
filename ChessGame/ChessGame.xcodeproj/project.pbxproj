@@ -15,6 +15,7 @@
 		CF558D99234611C000A7ABE7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D98234611C000A7ABE7 /* Board.swift */; };
 		CF558D9B234611D500A7ABE7 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D9A234611D500A7ABE7 /* BoardTests.swift */; };
 		CF558D9C2346128A00A7ABE7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D98234611C000A7ABE7 /* Board.swift */; };
+		CF558DA023465CE600A7ABE7 /* UserInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D9F23465CE600A7ABE7 /* UserInputView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -39,6 +40,7 @@
 		CF558D962346116E00A7ABE7 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
 		CF558D98234611C000A7ABE7 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
 		CF558D9A234611D500A7ABE7 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
+		CF558D9F23465CE600A7ABE7 /* UserInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInputView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 				832D1ADE233CB957009D58D3 /* main.swift */,
 				CF558D9123460E1800A7ABE7 /* Pawn.swift */,
 				CF558D98234611C000A7ABE7 /* Board.swift */,
+				CF558D9F23465CE600A7ABE7 /* UserInputView.swift */,
 			);
 			path = ChessGame;
 			sourceTree = "<group>";
@@ -187,6 +190,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				832D1ADF233CB957009D58D3 /* main.swift in Sources */,
+				CF558DA023465CE600A7ABE7 /* UserInputView.swift in Sources */,
 				CF558D9223460E1800A7ABE7 /* Pawn.swift in Sources */,
 				CF558D99234611C000A7ABE7 /* Board.swift in Sources */,
 			);

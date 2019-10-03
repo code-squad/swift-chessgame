@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct Pawn: Equatable {
+struct Pawn: Equatable, CustomStringConvertible {
     
     enum Color {
         case white, black
@@ -22,5 +22,12 @@ struct Pawn: Equatable {
 
     init(color: Pawn.Color) {
         self.color = color
+    }
+    
+    var description: String {
+        switch color {
+        case .white : return "\u{2659}"
+        case .black : return "\u{265F}"
+        }
     }
 }
