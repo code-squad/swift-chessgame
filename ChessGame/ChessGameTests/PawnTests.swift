@@ -10,6 +10,11 @@ import XCTest
 
 class PawnTests: XCTestCase {
     
+    func test기본생성자() {
+        let pawn = Pawn()
+        XCTAssertEqual(pawn.color, Pawn.Color.white)
+    }
+    
     func test인스턴스_생성하기() {
         XCTAssertTrue(verifyPawn(color: .white))
         XCTAssertTrue(verifyPawn(color: .black))

@@ -12,6 +12,9 @@
 		CF558D9223460E1800A7ABE7 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D9123460E1800A7ABE7 /* Pawn.swift */; };
 		CF558D9323460F2E00A7ABE7 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D9123460E1800A7ABE7 /* Pawn.swift */; };
 		CF558D972346116E00A7ABE7 /* PawnTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D962346116E00A7ABE7 /* PawnTests.swift */; };
+		CF558D99234611C000A7ABE7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D98234611C000A7ABE7 /* Board.swift */; };
+		CF558D9B234611D500A7ABE7 /* BoardTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D9A234611D500A7ABE7 /* BoardTests.swift */; };
+		CF558D9C2346128A00A7ABE7 /* Board.swift in Sources */ = {isa = PBXBuildFile; fileRef = CF558D98234611C000A7ABE7 /* Board.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -34,6 +37,8 @@
 		CF558D8D23460D4500A7ABE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CF558D9123460E1800A7ABE7 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		CF558D962346116E00A7ABE7 /* PawnTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PawnTests.swift; sourceTree = "<group>"; };
+		CF558D98234611C000A7ABE7 /* Board.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Board.swift; sourceTree = "<group>"; };
+		CF558D9A234611D500A7ABE7 /* BoardTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoardTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +82,7 @@
 			children = (
 				832D1ADE233CB957009D58D3 /* main.swift */,
 				CF558D9123460E1800A7ABE7 /* Pawn.swift */,
+				CF558D98234611C000A7ABE7 /* Board.swift */,
 			);
 			path = ChessGame;
 			sourceTree = "<group>";
@@ -86,6 +92,7 @@
 			children = (
 				CF558D8B23460D4500A7ABE7 /* ChessGameTests.swift */,
 				CF558D962346116E00A7ABE7 /* PawnTests.swift */,
+				CF558D9A234611D500A7ABE7 /* BoardTests.swift */,
 				CF558D8D23460D4500A7ABE7 /* Info.plist */,
 			);
 			path = ChessGameTests;
@@ -181,6 +188,7 @@
 			files = (
 				832D1ADF233CB957009D58D3 /* main.swift in Sources */,
 				CF558D9223460E1800A7ABE7 /* Pawn.swift in Sources */,
+				CF558D99234611C000A7ABE7 /* Board.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -190,6 +198,8 @@
 			files = (
 				CF558D972346116E00A7ABE7 /* PawnTests.swift in Sources */,
 				CF558D8C23460D4500A7ABE7 /* ChessGameTests.swift in Sources */,
+				CF558D9C2346128A00A7ABE7 /* Board.swift in Sources */,
+				CF558D9B234611D500A7ABE7 /* BoardTests.swift in Sources */,
 				CF558D9323460F2E00A7ABE7 /* Pawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
