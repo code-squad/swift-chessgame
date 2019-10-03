@@ -8,13 +8,17 @@
 
 import Foundation
 
-struct Pawn {
+struct Pawn: Equatable {
     
     enum Color {
         case white, black
     }
     
     let color: Color
+    
+    init() {
+        self.init(color: .white)
+    }
 
     init(color: Pawn.Color) {
         self.color = color
