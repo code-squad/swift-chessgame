@@ -8,5 +8,14 @@
 
 import Foundation
 
-print("Hello, World!")
+let board = Board()
+board.initialize()
 
+let inputView = UserInputView()
+while case let command = inputView.read(with: .read), command != "e"  {
+    switch command {
+    case "s": board.showGame()
+    default:
+        print("잘못된 명령입니다")
+    }
+}
