@@ -8,5 +8,32 @@
 
 import Foundation
 
-print("Hello, World!")
+func game() {
+    print("=== chess game ===")
+    print("Input 's' to start, 'e' to end")
+    
+    while let c = readLine() {
+        switch c {
+        case "s":
+            printBoard()
+        case "e":
+            print("end")
+            return
+        default:
+            print("wrong input")
+            continue
+        }
+    }
+}
 
+func printBoard() {
+    let board = Board()
+    board.initialize()
+    board.printBoard()
+}
+
+func main() {
+    game()
+}
+
+main()

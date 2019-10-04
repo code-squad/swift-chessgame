@@ -15,23 +15,54 @@
 import Foundation
 
 class Board {
-    private var pawns: [Pawn]
+    private var whitePawns: [Pawn]
+    private var blackPawns: [Pawn]
     
     init() {
-        self.pawns = [Pawn]()
+        self.whitePawns = [Pawn]()
+        self.blackPawns = [Pawn]()
     }
     
-    func add(pawn: Pawn) {
-        self.pawns.append(pawn)
-    }
-    
-    var count: Int {
-        return self.pawns.count
-    }
-    
-    subscript(index : Int) -> Pawn {
-        get {
-            return self.pawns[index]
+    func add(pawn: Pawn, to color:Pawn.PieceColor) {
+        switch color {
+        case .white:
+            whitePawns.append(pawn)
+        case .black:
+            blackPawns.append(pawn)
         }
+    }
+    
+    func initialize() {
+        for _ in 1...8 {
+            add(pawn: Pawn(with: .white), to: .white)
+            add(pawn: Pawn(with: .black), to: .black)
+        }
+    }
+    
+    func makePawnsResult(with pawns: [Pawn]) -> String {
+        var result = ""
+        for pawn in pawns {
+            result += pawn.color.description
+        }
+        return result
+    }
+    
+    func whitePawnsResult() -> String {
+        return makePawnsResult(with: whitePawns)
+    }
+    
+    func blackPawnsResult() -> String {
+        return makePawnsResult(with: blackPawns)
+    }
+    
+    func printBoard() {
+        print("--------")
+        print(blackPawnsResult())
+        print("--------")
+        print("--------")
+        print("--------")
+        print("--------")
+        print(whitePawnsResult())
+        print("--------")
     }
 }
