@@ -15,54 +15,89 @@
 import Foundation
 
 class Board {
-    private var whitePawns: [Pawn]
-    private var blackPawns: [Pawn]
+    private var whitePieces: [Piece]
+    private var whitePawns: [Piece]
+    private var blackPieces: [Piece]
+    private var blackPawns: [Piece]
     
     init() {
-        self.whitePawns = [Pawn]()
-        self.blackPawns = [Pawn]()
+        self.whitePieces = [Piece]()
+        self.whitePawns = [Piece]()
+        self.blackPieces = [Piece]()
+        self.blackPawns = [Piece]()
     }
     
-    func add(pawn: Pawn, to color:Pawn.PieceColor) {
-        switch color {
+    func add(piece: Piece, to side:Piece.Side) {
+        switch side {
         case .white:
-            whitePawns.append(pawn)
+            if piece.type == .pawn {
+                whitePawns.append(piece)
+            } else {
+                whitePieces.append(piece)
+            }
         case .black:
-            blackPawns.append(pawn)
+            if piece.type == .pawn {
+                blackPawns.append(piece)
+            } else {
+                blackPieces.append(piece)
+            }
         }
     }
     
     func initialize() {
+        add(piece: Piece(.rook, of: .white), to: .white)
+        add(piece: Piece(.knight, of: .white), to: .white)
+        add(piece: Piece(.bishop, of: .white), to: .white)
+        add(piece: Piece(.queen, of: .white), to: .white)
+        add(piece: Piece(.king, of: .white), to: .white)
+        add(piece: Piece(.bishop, of: .white), to: .white)
+        add(piece: Piece(.knight, of: .white), to: .white)
+        add(piece: Piece(.rook, of: .white), to: .white)
         for _ in 1...8 {
-            add(pawn: Pawn(with: .white), to: .white)
-            add(pawn: Pawn(with: .black), to: .black)
+            add(piece: Piece(.pawn, of: .white), to: .white)
+            add(piece: Piece(.pawn, of: .black), to: .black)
         }
+        add(piece: Piece(.rook, of: .black), to: .black)
+        add(piece: Piece(.knight, of: .black), to: .black)
+        add(piece: Piece(.bishop, of: .black), to: .black)
+        add(piece: Piece(.queen, of: .black), to: .black)
+        add(piece: Piece(.king, of: .black), to: .black)
+        add(piece: Piece(.bishop, of: .black), to: .black)
+        add(piece: Piece(.knight, of: .black), to: .black)
+        add(piece: Piece(.rook, of: .black), to: .black)
+        
     }
     
-    func makePawnsResult(with pawns: [Pawn]) -> String {
+    func makeResult(with pieces: [Piece]) -> String {
         var result = ""
-        for pawn in pawns {
-            result += pawn.color.description
+        for piece in pieces {
+            result += piece.description
         }
         return result
     }
     
+    func whitePiecesResult() -> String {
+        return makeResult(with: whitePieces)
+    }
     func whitePawnsResult() -> String {
-        return makePawnsResult(with: whitePawns)
+        return makeResult(with: whitePawns)
     }
     
     func blackPawnsResult() -> String {
-        return makePawnsResult(with: blackPawns)
+        return makeResult(with: blackPawns)
+    }
+    func blackPiecesResult() -> String {
+        return makeResult(with: blackPieces)
     }
     
     func printBoard() {
-        print("--------")
+        print(blackPiecesResult())
         print(blackPawnsResult())
         print("--------")
         print("--------")
         print("--------")
         print("--------")
         print(whitePawnsResult())
-        print("--------")
+        print(whitePiecesResult())
     }
 }

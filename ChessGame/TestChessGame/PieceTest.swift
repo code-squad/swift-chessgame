@@ -1,6 +1,6 @@
 //
 /******************************************************************************
- * File Name        : BoardTest.swift
+ * File Name        : PieceTest.swift
  * Description      : ChessGame
  *******************************************************************************
  * Copyright (c) 2002-2019 KineMaster Corp. All rights reserved.
@@ -14,7 +14,7 @@
 
 import XCTest
 
-class BoardTest: XCTestCase {
+class PieceTest: XCTestCase {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -23,16 +23,24 @@ class BoardTest: XCTestCase {
     override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
+
     
-    func test보드_초기화_성공() {
-        let board = Board()
-        board.initialize()
-        XCTAssertEqual(board.whitePawnsResult(), "♙♙♙♙♙♙♙♙")
-        XCTAssertEqual(board.blackPawnsResult(), "♟♟♟♟♟♟♟♟")
+    func verify(piece: Piece, side: Piece.Side, type: Piece.`Type`) -> Bool {
+        return (piece.side == side && piece.type == type)
+    }
+
+    func testPiece_생성하기() {
+        let whitePawn = Piece(.pawn, of: .white)
+        XCTAssertTrue(verify(piece: whitePawn, side: .white, type: .pawn))
+        XCTAssertTrue(whitePawn.isWhite())
+
+        let blackPawn = Piece(.pawn, of: .black)
+        XCTAssertTrue(verify(piece: blackPawn, side: .black, type: .pawn))
+        XCTAssertTrue(blackPawn.isBlack())
+        XCTAssertFalse(blackPawn.isWhite())
         
-        XCTAssertEqual(board.whitePiecesResult(), "♖♘♗♕♔♗♘♖")
-        XCTAssertEqual(board.blackPiecesResult(), "♜♞♝♛♚♝♞♜")
+        let blackKing = Piece(.king, of: .black)
+        XCTAssertTrue(verify(piece: blackKing, side: .black, type: .king))
     }
 
 }
-
