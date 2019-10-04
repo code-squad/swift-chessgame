@@ -17,9 +17,18 @@ import Foundation
 
 struct Pawn {
     
-    enum PieceColor: Int {
+    enum PieceColor: Int, CustomStringConvertible {
         case white = 1
         case black
+        
+        var description: String {
+            switch self {
+            case .white:
+                return "♙"
+            case .black:
+                return "♟"
+            }
+        }
     }
 
     let color: PieceColor
