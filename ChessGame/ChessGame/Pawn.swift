@@ -8,17 +8,23 @@
 
 import Foundation
 
-enum ChessPieceColor {
-    case white
-    case black
-}
+typealias PawnColor = Pawn.Color
 
 class Pawn {
     
-    let color : ChessPieceColor
+    enum Color {
+        case white
+        case black
+    }
     
-    init(color: ChessPieceColor) {
+    let color : Color
+    
+    init(color: Color) {
         self.color = color
+    }
+    
+    convenience init() {
+        self.init(color: .white)
     }
     
 }
