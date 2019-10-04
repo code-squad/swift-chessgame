@@ -7,8 +7,22 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		134D662D2344AC13000455C8 /* TestChessGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D662C2344AC13000455C8 /* TestChessGame.swift */; };
+		134D66352344AC62000455C8 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D66342344AC62000455C8 /* Pawn.swift */; };
+		134D66362344AD53000455C8 /* Pawn.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134D66342344AC62000455C8 /* Pawn.swift */; };
+		134D66372346F37B000455C8 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D1ADE233CB957009D58D3 /* main.swift */; };
 		832D1ADF233CB957009D58D3 /* main.swift in Sources */ = {isa = PBXBuildFile; fileRef = 832D1ADE233CB957009D58D3 /* main.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		134D66322344AC25000455C8 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 832D1AD3233CB957009D58D3 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 832D1ADA233CB957009D58D3;
+			remoteInfo = ChessGame;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		832D1AD9233CB957009D58D3 /* CopyFiles */ = {
@@ -23,11 +37,22 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		134D662A2344AC13000455C8 /* TestChessGame.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TestChessGame.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		134D662C2344AC13000455C8 /* TestChessGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TestChessGame.swift; sourceTree = "<group>"; };
+		134D662E2344AC13000455C8 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		134D66342344AC62000455C8 /* Pawn.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Pawn.swift; sourceTree = "<group>"; };
 		832D1ADB233CB957009D58D3 /* ChessGame */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = ChessGame; sourceTree = BUILT_PRODUCTS_DIR; };
 		832D1ADE233CB957009D58D3 /* main.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = main.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		134D66272344AC13000455C8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		832D1AD8233CB957009D58D3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -38,10 +63,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		134D662B2344AC13000455C8 /* TestChessGame */ = {
+			isa = PBXGroup;
+			children = (
+				134D662C2344AC13000455C8 /* TestChessGame.swift */,
+				134D662E2344AC13000455C8 /* Info.plist */,
+			);
+			path = TestChessGame;
+			sourceTree = "<group>";
+		};
 		832D1AD2233CB957009D58D3 = {
 			isa = PBXGroup;
 			children = (
 				832D1ADD233CB957009D58D3 /* ChessGame */,
+				134D662B2344AC13000455C8 /* TestChessGame */,
 				832D1ADC233CB957009D58D3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,6 +85,7 @@
 			isa = PBXGroup;
 			children = (
 				832D1ADB233CB957009D58D3 /* ChessGame */,
+				134D662A2344AC13000455C8 /* TestChessGame.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -58,6 +94,7 @@
 			isa = PBXGroup;
 			children = (
 				832D1ADE233CB957009D58D3 /* main.swift */,
+				134D66342344AC62000455C8 /* Pawn.swift */,
 			);
 			path = ChessGame;
 			sourceTree = "<group>";
@@ -65,6 +102,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		134D66292344AC13000455C8 /* TestChessGame */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 134D66312344AC13000455C8 /* Build configuration list for PBXNativeTarget "TestChessGame" */;
+			buildPhases = (
+				134D66262344AC13000455C8 /* Sources */,
+				134D66272344AC13000455C8 /* Frameworks */,
+				134D66282344AC13000455C8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				134D66332344AC25000455C8 /* PBXTargetDependency */,
+			);
+			name = TestChessGame;
+			productName = TestChessGame;
+			productReference = 134D662A2344AC13000455C8 /* TestChessGame.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		832D1ADA233CB957009D58D3 /* ChessGame */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 832D1AE2233CB957009D58D3 /* Build configuration list for PBXNativeTarget "ChessGame" */;
@@ -92,6 +147,9 @@
 				LastUpgradeCheck = 1030;
 				ORGANIZATIONNAME = codesquad;
 				TargetAttributes = {
+					134D66292344AC13000455C8 = {
+						CreatedOnToolsVersion = 10.3;
+					};
 					832D1ADA233CB957009D58D3 = {
 						CreatedOnToolsVersion = 10.3;
 					};
@@ -110,22 +168,88 @@
 			projectRoot = "";
 			targets = (
 				832D1ADA233CB957009D58D3 /* ChessGame */,
+				134D66292344AC13000455C8 /* TestChessGame */,
 			);
 		};
 /* End PBXProject section */
 
+/* Begin PBXResourcesBuildPhase section */
+		134D66282344AC13000455C8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
+		134D66262344AC13000455C8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				134D662D2344AC13000455C8 /* TestChessGame.swift in Sources */,
+				134D66362344AD53000455C8 /* Pawn.swift in Sources */,
+				134D66372346F37B000455C8 /* main.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		832D1AD7233CB957009D58D3 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				832D1ADF233CB957009D58D3 /* main.swift in Sources */,
+				134D66352344AC62000455C8 /* Pawn.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		134D66332344AC25000455C8 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 832D1ADA233CB957009D58D3 /* ChessGame */;
+			targetProxy = 134D66322344AC25000455C8 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin XCBuildConfiguration section */
+		134D662F2344AC13000455C8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TestChessGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = reno.TestChessGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		134D66302344AC13000455C8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = TestChessGame/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 10.14;
+				PRODUCT_BUNDLE_IDENTIFIER = reno.TestChessGame;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
 		832D1AE0233CB957009D58D3 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -262,6 +386,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		134D66312344AC13000455C8 /* Build configuration list for PBXNativeTarget "TestChessGame" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				134D662F2344AC13000455C8 /* Debug */,
+				134D66302344AC13000455C8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		832D1AD6233CB957009D58D3 /* Build configuration list for PBXProject "ChessGame" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
