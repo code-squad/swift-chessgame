@@ -8,40 +8,16 @@
 
 import Foundation
 
-print("Hello, World!")
-
-struct Pawn {
-	let color: Color
-	
-	enum Color: String {
-		case white
-		case black
-	}
-	
-	init(color: Color) {
-		self.color = color
-	}
-	
-	init?(string: String) {
-		let lowercased = string.lowercased()
-		switch Color(rawValue: lowercased) {
-		case .some(let color):
-			self.color = color
-			return
-		case .none:
-			return nil
+func main() {
+	GameController.setup()
+	while true {
+		GameController.showRequestInputMessage()
+		GameController.getInput()
+		let needQuit = GameController.handleInput()
+		if needQuit {
+			break
 		}
 	}
 }
 
-class Board {
-	private var pawns = [Pawn]()
-	
-	var pawnCount: Int {
-		return pawns.count
-	}
-	
-	func add(_ pawn: Pawn) {
-		pawns.append(pawn)
-	}
-}
+main()
