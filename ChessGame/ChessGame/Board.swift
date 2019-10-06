@@ -29,26 +29,35 @@ class Board {
 			return result + string
 		}
 	}
-			
-	init() {
+				
+	func initailize() {
+		coordinate = [[String]]()
 		let line = Array(1...8).map { _ in "_" }
-		coordinate.append(line)
 		coordinate.append(
-			Pawn.makePawns(color: .black).map { $0.representation }
+			Piece.makeBack(color: .black)
+				.map { $0.representation }
+		)
+		coordinate.append(
+			Piece.makeFront(color: .black)
+				.map { $0.representation }
 		)
 		coordinate.append(line)
 		coordinate.append(line)
 		coordinate.append(line)
 		coordinate.append(line)
 		coordinate.append(
-			Pawn.makePawns(color: .white).map { $0.representation }
+			Piece.makeFront(color: .white)
+				.map { $0.representation }
 		)
-		coordinate.append(line)
+		coordinate.append(
+			Piece.makeBack(color: .white)
+				.map { $0.representation }
+		)
 	}
 }
 
 extension Board: Displayable {
-	func representation() -> [String] {
+	func represent() -> [String] {
 		return Row.allCases.map { rowRepresentation($0) }
 	}
 }

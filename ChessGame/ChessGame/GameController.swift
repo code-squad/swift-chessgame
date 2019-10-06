@@ -9,7 +9,7 @@
 import Foundation
 
 struct GameController {
-	private static var board: Board?
+	private static let board = Board()
 	private static var input: String?
 	
 	enum Input: String {
@@ -18,7 +18,7 @@ struct GameController {
 	}
 	
 	static func setup() {
-		board = Board()
+		board.initailize()
 	}
 	static func showRequestInputMessage() {
 		OutputView.showRequestInputMessage()
@@ -35,15 +35,10 @@ struct GameController {
 		case .e:
 			return true
 		case .s:
-			showBoard()
+			OutputView.show(displayable: board)
 		case .none:
 			OutputView.showErrorMessage()
 		}
 		return false
-	}
-	
-	private static func showBoard() {
-		guard let board = board else { return }
-		OutputView.show(displayable: board)
 	}
 }
