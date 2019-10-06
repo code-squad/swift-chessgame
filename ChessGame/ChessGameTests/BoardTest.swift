@@ -17,14 +17,26 @@ class BoardTest: XCTestCase {
     }
 
     func test보드생성_성공() {
-        XCTAssertTrue(verifyPawnAdded(pawn: Pawn(color: .white)))
-        XCTAssertTrue(verifyPawnAdded(pawn: Pawn(color: .black)))
+        let whitePawn = Pawn()
+        let blackPawn = Pawn(color: .black, representation: Pawn.Color.black.rawValue)
+        XCTAssertTrue(verifyPawnAdded(pawn: whitePawn))
+        XCTAssertTrue(verifyPawnAdded(pawn: blackPawn))
     }
     
     private func verifyPawnAdded(pawn: Pawn) -> Bool {
         let board = Board()
         board.add(pawn: pawn)
-        return board.count == 1 && board[0] == pawn
+        if pawn.color == .black {
+            return board.count == 1 && board.blackPawn(index: 0) == pawn
+        }
+        return board.count == 1 && board.whitePawn(index: 0) == pawn
+    }
+    
+    func test보드_초기화_성공() {
+        let board = Board()
+        board.initialize()
+        XCTAssertEqual(board.whitePawnsResult(), "♙♙♙♙♙♙♙♙")
+        XCTAssertEqual(board.blackPawnsResult(), "♟♟♟♟♟♟♟♟")
     }
 
 }
