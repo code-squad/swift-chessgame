@@ -9,12 +9,12 @@
 import Foundation
 
 protocol Displayable {
-	func representation() -> [String]
+	func represent() -> [String]
 }
 
 struct OutputView {
 	static func show(displayable: Displayable) {
-		for line in displayable.representation() {
+		for line in displayable.represent() {
 			print(line)
 		}
 	}
