@@ -8,7 +8,8 @@
 
 import Foundation
 
-struct Piece {
+struct Piece: Hashable {
+	let id = UUID()
 	let color: Color
 	let type: PieceType
 	
@@ -26,19 +27,13 @@ struct Piece {
 			return type.blackRepresentation
 		case .white:
 			return type.whiteRepresentation
+		case .none:
+			return type.noneRepresentation
 		}
 	}
 	
 	enum PieceType {
-		case pawn, knight, rook, bishop, queen, king
-		
-		var count: Int {
-			switch self {
-			case .pawn: return 8
-			case .knight, .rook, .bishop: return 2
-			case .queen, .king: return 1
-			}
-		}
+		case pawn, knight, rook, bishop, queen, king, none
 		
 		var blackRepresentation: String {
 			switch self {
@@ -48,6 +43,7 @@ struct Piece {
 			case .bishop: return "♝"
 			case .queen: return "♛"
 			case .king: return "♚"
+			default: return "_"
 			}
 		}
 		
@@ -59,20 +55,23 @@ struct Piece {
 			case .bishop: return "♗"
 			case .queen: return "♕"
 			case .king: return "♔"
+			default: return "_"
 			}
+		}
+		
+		var noneRepresentation: String {
+			return "_"
 		}
 	}
 	
 	enum Color: String {
 		case white
 		case black
-		
-		var representation: String {
-			switch self {
-			case .black: return "\u{265F}"
-			case .white: return "\u{2659}"
-			}
-		}
+		case none
+	}
+	
+	static var none: Piece {
+		return Piece(color: .none, type: .none)
 	}
 		
 	static func makeFront(color: Color) -> [Piece] {
@@ -91,5 +90,9 @@ struct Piece {
 			Piece(color: color, type: .knight),
 			Piece(color: color, type: .rook),
 		]
+	}
+	static func makeEmpty() -> [Piece] {
+		return Array(1...8)
+			.map { _ in Piece(color: .none, type: .none) }
 	}
 }
