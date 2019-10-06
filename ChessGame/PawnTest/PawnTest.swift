@@ -15,5 +15,11 @@ class PawnSpec: QuickSpec {
 			expect(Pawn(string: "black")).notTo(beNil())
 			expect(Pawn(string: "black")!.color.rawValue).to(be("black"))
 		}
+		
+		it("representation check") {
+			XCTAssertNotEqual(Pawn(color: .black).representation, "♙")
+			XCTAssertEqual(Pawn(color: .black).representation, "♟")
+			XCTAssertEqual(Pawn(color: .white).representation, "♙")
+		}
 	}
 }

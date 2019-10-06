@@ -14,11 +14,9 @@ class BoardSpec: QuickSpec {
 		it("인스턴스 만들기") {
 			expect(Board()).notTo(beNil())
 		}
-		it("pawn 추가하기") {
+		it("검은색 폰과 흰색 폰을 각각 8개씩 가지도록 초기화") {
 			let board = Board()
-			let pawn = Pawn(color: .black)
-			board.add(pawn)
-			expect(board.pawnCount).to(be(1))
+			XCTAssertEqual(board.rowRepresentation(.two), "♟♟♟♟♟♟♟♟")
 		}
 	}
 }
