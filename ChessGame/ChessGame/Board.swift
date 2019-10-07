@@ -14,25 +14,79 @@ enum ChessGameError : Error {
 
 
 class Board {
-    var pawns : [Pawn]
+    var whitePawns : [Pawn]
+    var blackPawns : [Pawn]
     
     init() {
-        self.pawns = []
+        self.whitePawns = []
+        self.blackPawns = []
+    }
+    
+    func initialize() {
+        for _ in 1...8 {
+            add(pawn: Pawn(color: Pawn.Color.black))
+            add(pawn: Pawn(color: Pawn.Color.white))
+        }
     }
     
     func add(pawn: Pawn) {
-        self.pawns.append(pawn)
+        if pawn.color == Pawn.Color.black {
+            blackPawns.append(pawn)
+        }
+        else {
+            whitePawns.append(pawn)
+        }
     }
     
     func pawnCount() -> Int {
-        return pawns.count
+        return blackPawns.count + whitePawns.count
     }
     
-    func color(pawnIndex: Int) throws -> PawnColor {
-        guard pawnIndex < pawns.count else {
-            throw ChessGameError.invalidRange
-        }
+    func blackPawnCount() -> Int {
+        return blackPawns.count
+    }
+    
+    func whitePawnCount() -> Int {
+        return whitePawns.count
+    }
+    
+    func blackPawnResult() -> String {
+        return pawnResult(pawns: self.blackPawns)
+    }
+    
+    func whitePawnResult() -> String {
+        return pawnResult(pawns: self.whitePawns)
+    }
+    
+    func emptyPosResult() -> String {
+        return "--------\n"
+    }
+    
+    private func pawnResult(pawns: [Pawn]) -> String {
+        var result : String = ""
         
-        return self.pawns[pawnIndex].color
+        for pawn in pawns {
+            result.append(pawn.representation)
+        }
+        result.append("\n")
+        
+        return result
+        
+    }
+
+    func print() -> String {
+        let boardResult : String =
+        """
+        \(emptyPosResult())
+        \(blackPawnResult())
+        \(emptyPosResult())
+        \(emptyPosResult())
+        \(emptyPosResult())
+        \(emptyPosResult())
+        \(whitePawnResult())
+        \(emptyPosResult())
+        """
+        
+        return boardResult
     }
 }

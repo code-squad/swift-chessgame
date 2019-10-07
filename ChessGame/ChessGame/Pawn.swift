@@ -15,12 +15,25 @@ class Pawn {
     enum Color {
         case white
         case black
+        
+        var representation : String {
+            switch self {
+            case Color.white :
+                return "♙"
+            case Color.black :
+                return "♟"
+            }
+        }
     }
     
     let color : Color
+    let representation : String
     
     init(color: Color) {
         self.color = color
+        self.representation = self.color.representation
+        
+        
     }
     
     convenience init() {

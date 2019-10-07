@@ -34,13 +34,18 @@ class BoardUnitTest: QuickSpec {
                     let board = Board()
                     board.add(pawn: Pawn(color: .black))
                     expect(board.pawnCount()).to(equal(1))
-                    expect(try! board.color(pawnIndex: 0)).to(equal(.black))
                     
                     board.add(pawn: Pawn(color: .white))
                     expect(board.pawnCount()).to(equal(2))
-                    expect(try! board.color(pawnIndex: 1)).to(equal(.white))
-                    
-                    expect(try! board.color(pawnIndex: 0)).toNot(equal(.white))
+                }
+            }
+            
+            context("when board is initialized") {
+                it("bard has 8 white pawns and 8 black pawns") {
+                    let board = Board()
+                    board.initialize()
+                    expect(board.whitePawnResult()).to(equal( "♙♙♙♙♙♙♙♙\n"))
+                    expect(board.blackPawnResult()).to(equal("♟♟♟♟♟♟♟♟\n"))
                 }
             }
         }
