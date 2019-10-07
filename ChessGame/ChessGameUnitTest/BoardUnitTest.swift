@@ -32,10 +32,10 @@ class BoardUnitTest: QuickSpec {
             context("when pawn is added to board") {
                 it("board has as many pawns added.") {
                     let board = Board()
-                    board.add(pawn: Pawn(color: .black))
+                    board.addPawn(piece: Piece(color: .black, representation: .pawn))
                     expect(board.pawnCount()).to(equal(1))
                     
-                    board.add(pawn: Pawn(color: .white))
+                    board.addPawn(piece: Piece(color: .white, representation: .pawn))
                     expect(board.pawnCount()).to(equal(2))
                 }
             }

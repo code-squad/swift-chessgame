@@ -10,7 +10,7 @@ import XCTest
 import Quick
 import Nimble
 
-class PawnUnitTest: QuickSpec {
+class PieceUnitTest: QuickSpec {
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -20,8 +20,8 @@ class PawnUnitTest: QuickSpec {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
     
-    func verifyPawn(color: PawnColor) -> Bool {
-        let pawn = Pawn(color: color)
+    func verifyPawn(color: PawnColor, representation: Piece.Representation) -> Bool {
+        let pawn = Piece(color: color, representation: representation)
         return pawn.color == color
     }
     
@@ -30,16 +30,16 @@ class PawnUnitTest: QuickSpec {
         describe("Pawn") {
             context("when an instance is created") {
                 it("instance is created correctly") {
-                    let pawn = Pawn(color: .black)
-                    expect(pawn).to(beAnInstanceOf(Pawn.self))
+                    let pawn = Piece(color: .black, representation: .pawn)
+                    expect(pawn).to(beAnInstanceOf(Piece.self))
                 }
                 
                 it("instance has the black color") {
-                    expect(self.verifyPawn(color: .black)) == true
+                    expect(self.verifyPawn(color: .black, representation: .pawn)) == true
                 }
                 
                 it("instance has the white color") {
-                    expect(self.verifyPawn(color: .white)) == true
+                    expect(self.verifyPawn(color: .white, representation: .pawn)) == true
                 }
             }
         }

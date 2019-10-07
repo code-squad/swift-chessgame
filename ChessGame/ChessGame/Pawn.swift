@@ -2,42 +2,19 @@
 //  Pawn.swift
 //  ChessGame
 //
-//  Created by temphee.Reid on 03/10/2019.
+//  Created by temphee.Reid on 08/10/2019.
 //  Copyright © 2019 codesquad. All rights reserved.
 //
 
 import Foundation
 
-typealias PawnColor = Pawn.Color
-
 class Pawn {
+    let color : Piece.Color
+    let representation : Piece.Representation
     
-    enum Color {
-        case white
-        case black
-        
-        var representation : String {
-            switch self {
-            case Color.white :
-                return "♙"
-            case Color.black :
-                return "♟"
-            }
-        }
-    }
-    
-    let color : Color
-    let representation : String
-    
-    init(color: Color) {
+    init(color: Piece.Color, representation: Piece.Representation) {
         self.color = color
-        self.representation = self.color.representation
-        
-        
-    }
-    
-    convenience init() {
-        self.init(color: .white)
+        self.representation = representation
     }
     
 }
